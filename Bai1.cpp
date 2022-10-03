@@ -54,6 +54,7 @@ class Contestant
 	float dt;
 	float dl;
 	float dh;
+	// Point p;
 
 public:
 	Contestant()
@@ -65,6 +66,7 @@ public:
 		this->dt = 0;
 		this->dl = 0;
 		this->dh = 0;
+		// this->p = Point(0, 0);
 	}
 
 	Contestant(int sbd, string hoTen, string gioiTinh, float dt, float dl, float dh)
