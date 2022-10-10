@@ -136,6 +136,68 @@ public:
 		this->ms = ms;
 	}
 
+	int UCLN(int a, int b)
+	{
+		if (a % b != 0)
+		{
+			UCLN(a, b);
+		}
+		else
+		{
+			return b;
+		}
+	}
+
+	void nhap()
+	{
+		cout << "Tu so: ";
+		cin >> ts;
+		cout << "Mau so: ";
+		cin >> ms;
+		while (ms == 0)
+		{
+			cout << "Mau so phai khac 0";
+			cout << "\nMau so: ";
+			cin >> ms;
+		};
+	}
+
+	void cong(Fraction a)
+	{
+		Fraction c;
+		c.ts = a.ts * b.ms + b.ts * a.ms;
+		c.ms = a.ms * b.ms;
+		c.rutgon();
+		cout << "tong:" << endl;
+		xuat(c);
+	}
+	void nhan(PhanSo a, PhanSo b)
+	{
+		PhanSo c;
+		c.ts = a.ts * b.ts;
+		c.ms = a.ms * b.ms;
+		c.rutgon();
+		cout << "tich: " << endl;
+		xuat(c);
+	}
+	friend void tru(PhanSo a, PhanSo b)
+	{
+		PhanSo c;
+		c.ts = a.ts * b.ms - b.ts * a.ms;
+		c.ms = a.ms * b.ms;
+		c.rutgon();
+		cout << "hieu: " << endl;
+		xuat(c);
+	}
+	friend void chia(PhanSo a, PhanSo b)
+	{
+		PhanSo c;
+		c.ts = a.ts * b.ms;
+		c.ms = a.ms * b.ts;
+		c.rutgon();
+		cout << "thuong: " << endl;
+		xuat(c);
+	}
 };
 
 int main()
