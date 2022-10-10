@@ -1,5 +1,6 @@
-#include <NhanVien.cpp>
+#include "NhanVien.cpp"
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
