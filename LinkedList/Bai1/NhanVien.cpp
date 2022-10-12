@@ -23,6 +23,10 @@ public:
         this->luong = luong;
     }
 
+    ~NhanVien()
+    {
+    }
+
     friend istream &operator>>(istream &is, NhanVien &nv)
     {
         cout << "Nhap ma: " << endl;

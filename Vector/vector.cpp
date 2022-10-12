@@ -166,22 +166,34 @@ public:
 
 int main()
 {
-	Vector<HocSinh> vhs;
-	int n;
-	cout << "Nhap so hoc sinh: ";
-	cin >> n;
-	cout << "\nNhap thong tin hoc sinh: ";
-	for (int i = 0; i < n; i++)
-	{
-		HocSinh a;
-		cout << "\nNhap hoc sinh thu " << i + 1;
-		a.nhap();
-		vhs.push_back(a);
-	}
-	cout << "\nTong so hoc sinh " << vhs.Size();
-	HocSinh b;
-	b = vhs[0];
-	cout << "\nSo lan diem danh cua hoc sinh thu 1: ";
-	b.getDiemDanh();
+	Vector<int> arrayTest;
+	arrayTest.push_back(1);
+	arrayTest.push_back(2);
+	arrayTest.push_back(3);
+	arrayTest.push_back(4);
+	arrayTest.insert(1,4);
+	arrayTest.popBack();
+	arrayTest.popBack();
+
+	int element = arrayTest[4];
+	cout << element << endl;
+	cout << arrayTest.Size();
+	// Vector<HocSinh> vhs;
+	// int n;
+	// cout << "Nhap so hoc sinh: ";
+	// cin >> n;
+	// cout << "\nNhap thong tin hoc sinh: ";
+	// for (int i = 0; i < n; i++)
+	// {
+	// 	HocSinh a;
+	// 	cout << "\nNhap hoc sinh thu " << i + 1;
+	// 	a.nhap();
+	// 	vhs.push_back(a);
+	// }
+	// cout << "\nTong so hoc sinh " << vhs.Size();
+	// HocSinh b;
+	// b = vhs[0];
+	// cout << "\nSo lan diem danh cua hoc sinh thu 1: ";
+	// b.getDiemDanh();
 	return 0;
 }
