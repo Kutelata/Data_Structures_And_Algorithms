@@ -1,51 +1,42 @@
-#include<iostream>
+#include <iostream>
+
 using namespace std;
 
-void swap(int &a, int &b)
+int Partition(int arr[], int start, int end)
 {
-    int t = a;
-    a = b;
-    b = t;
-}
-int partition (int arr[], int low, int high)
-{
-    int pivot = arr[high];   
-    int left = low;
-    int right = high - 1;
-    while(true){
-        while(left <= right && arr[left] < pivot) left++;
-        while(right >= left && arr[right] > pivot) right--;
-        if (left >= right) break;
-        swap(arr[left], arr[right]);
-        left++;
-        right--;
-    }
-    swap(arr[left], arr[high]);
-    return left;
-}
-void quickSort(int arr[], int low, int high)
-{
-    if (low < high)
+    int pivot = arr[start];
+    int count = 0;
+    for (int i = start + 1; i <= end; i++)
     {
-        int pi = partition(arr, low, high);
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
+        if (arr[i] <= pivot)
+            count++;
     }
-}
-void printArray(int arr[], int size)
-{
-    int i;
-    for (i=0; i < size; i++)
-        cout<<arr[i]<<" ";
-    cout<<endl;
+    int pivotIndex = start + count;
+    swap(arr[pivotIndex], arr[start]);
+    int i = start, j = end;
+    while (i < pivotIndex && j > pivotIndex)
+    {
+        while (arr[i] <= pivot)
+        {
+            i++;
+        }
+        while (arr[j] > pivot)
+        {
+            j--;
+        }
+        if (i < pivotIndex && j > pivotIndex)
+        {
+            swap(arr[i++], arr[j--]);
+        }
+    }
+    return pivotIndex;
 }
 
-int main()
+void QuickSort(int arr[], int start, int end)
 {
-    int arr[] = {10, 80, 30, 90, 40, 50, 70};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    quickSort(arr, 0, n-1);
-    cout<<"Sorted array: "<<endl;
-    printArray(arr, n);
-    return 0;
+    if (start >= end)
+        return;
+    int p = Partition(arr, start, end);
+    QuickSort(arr, start, p - 1);
+    QuickSort(arr, p + 1, end);
 }

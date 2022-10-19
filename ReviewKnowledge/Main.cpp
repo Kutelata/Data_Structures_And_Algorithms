@@ -1,7 +1,7 @@
-#include "Point.cpp"
-#include "Contestant.cpp"
-#include "Fraction.cpp"
-#include "Complex.cpp"
+#include "point.cpp"
+#include "contestant.cpp"
+#include "fraction.cpp"
+#include "complex.cpp"
 
 int main()
 {
