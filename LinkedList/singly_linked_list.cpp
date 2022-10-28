@@ -31,7 +31,6 @@ public:
         this->head = nullptr;
     }
 
-    // Inserting elements (At start of the list)
     void Insert(int data)
     {
         Node *newNode = new Node(data);
@@ -47,7 +46,6 @@ public:
         }
     }
 
-    // Loop over the list. Return true if element found
     bool Search(int data)
     {
         Node *temp = head;
@@ -108,7 +106,6 @@ int main()
 {
     SinglyLinkedList l;
     
-    // Inserting elements
     l.Insert(6);
     l.Insert(9);
     l.Insert(1);
