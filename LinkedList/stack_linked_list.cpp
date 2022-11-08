@@ -2,83 +2,112 @@
 
 using namespace std;
 
-#define MAX 1000
-
-class Stack
+class Node
 {
 public:
-    int top;
-    int a[MAX];
+    int data;
+    Node *next;
+};
 
-    Stack()
+class StackLinkedList
+{
+public:
+    Node *top;
+
+    StackLinkedList()
     {
-        top = -1;
+        top = nullptr;
     }
 
-    bool Push(int x)
+    void Push(int value)
     {
-        if (top >= (MAX - 1))
+        Node *newNode = new Node;
+        newNode->data = value;
+        if (top != nullptr)
         {
-            cout << "Stack Overflow";
-            return false;
+            newNode->next = top;
+            top = newNode;
         }
         else
         {
-            a[++top] = x;
-            cout << x << " pushed into stack\n";
-            return true;
+            newNode->next = nullptr;
+            top = newNode;
         }
     }
 
-    bool Pop()
+    int Pop()
     {
-        if (top < 0)
+        if (top == nullptr)
         {
-            cout << "Stack Underflow";
+            cout << "Stack is empty";
+            return -1;
+        }
+        else
+        {
+            int value = top->data;
+            Node *newNode = top->next;
+            delete top;
+            top = newNode;
+            return value;
+        }
+    }
+
+    int Empty()
+    {
+        if (top == nullptr)
+        {
+            return 0;
+        }
+        return 1;
+    }
+
+    int Size()
+    {
+        if (top == nullptr)
+        {
             return 0;
         }
         else
         {
-            int x = a[top--];
-            return x;
+            int sizeStack = 0;
+            Node *newNode = top;
+            while (newNode != nullptr)
+            {
+                sizeStack++;
+                newNode = newNode->next;
+            }
+            return sizeStack;
         }
     }
 
-    int Peek()
+    int Top()
     {
-        if (top < 0)
+        if (top == nullptr)
         {
-            cout << "Stack is Empty";
-            return 0;
+            cout << "Stack is empty";
+            return -1;
         }
         else
         {
-            int x = a[top];
-            return x;
+            int value = top->data;
+            return value;
         }
-    }
-
-    bool IsEmpty()
-    {
-        return (top < 0);
     }
 };
 
 int main()
 {
-    Stack s;
-    s.Push(10);
-    s.Push(20);
-    s.Push(30);
-    cout << s.Pop() << " Popped from stack\n";
+    StackLinkedList sll = StackLinkedList();
+    sll.Push(5);
+    sll.Push(21);
+    sll.Push(10);
+    sll.Push(99);
+    sll.Push(101);
 
-    cout << "Top element is : " << s.Peek() << endl;
+    cout << "Size of Stack = " << sll.Size() << endl;
 
-    cout << "Elements present in stack : ";
-    while (!s.IsEmpty())
-    {
-        cout << s.Peek() << " ";
-        s.Pop();
-    }
-    return 0;
+    cout << sll.Pop() << endl;
+    cout << sll.Pop() << endl;
+
+    cout << "Size of Stack after pop = " << sll.Size() << endl;
 }

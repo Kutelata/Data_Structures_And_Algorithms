@@ -40,3 +40,28 @@ void QuickSort(int arr[], int start, int end)
     QuickSort(arr, start, p - 1);
     QuickSort(arr, p + 1, end);
 }
+
+void QuicksortV2(int arr[], int start, int end)
+{
+    int pivot, i, j, mid;
+    if (start < end)
+    {
+        mid = (start + end) / 2;
+        swap(arr[start], arr[mid]);
+        pivot = arr[start];
+        i = start + 1;
+        j = end;
+        while (i <= j)
+        {
+            while (i <= end && arr[i] <= pivot)
+                i++;
+            while (j >= start && arr[j] > pivot)
+                j--;
+            if (i < j)
+                swap(arr[i], arr[j]);
+        }
+        swap(arr[start], arr[j]);
+        QuicksortV2(arr, start, j - 1);
+        QuicksortV2(arr, j + 1, end);
+    }
+}

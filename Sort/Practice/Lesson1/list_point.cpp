@@ -8,7 +8,7 @@ public:
 
     ListPoint()
     {
-        this->p = NULL;
+        this->p = nullptr;
         this->n = 0;
     }
 
@@ -21,7 +21,7 @@ public:
     ~ListPoint()
     {
         n = 0;
-        if (p != NULL)
+        if (p != nullptr)
         {
             delete p;
         }
@@ -30,7 +30,6 @@ public:
     void input()
     {
         cin >> n;
-        // this->p = new Point[n];
         for (int i = 0; i < n; i++)
         {
             cin >> this->p[i];
