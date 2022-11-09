@@ -16,45 +16,45 @@ public:
 
     StackLinkedList()
     {
-        top = nullptr;
+        this->top = nullptr;
     }
 
     void Push(int value)
     {
         Node *newNode = new Node;
         newNode->data = value;
-        if (top != nullptr)
+        if (this->top != nullptr)
         {
-            newNode->next = top;
-            top = newNode;
+            newNode->next = this->top;
+            this->top = newNode;
         }
         else
         {
             newNode->next = nullptr;
-            top = newNode;
+            this->top = newNode;
         }
     }
 
     int Pop()
     {
-        if (top == nullptr)
+        if (this->top == nullptr)
         {
             cout << "Stack is empty";
             return -1;
         }
         else
         {
-            int value = top->data;
-            Node *newNode = top->next;
-            delete top;
-            top = newNode;
+            int value = this->top->data;
+            Node *newNode = this->top->next;
+            delete this->top;
+            this->top = newNode;
             return value;
         }
     }
 
     int Empty()
     {
-        if (top == nullptr)
+        if (this->top == nullptr)
         {
             return 0;
         }
@@ -63,14 +63,14 @@ public:
 
     int Size()
     {
-        if (top == nullptr)
+        if (this->top == nullptr)
         {
             return 0;
         }
         else
         {
             int sizeStack = 0;
-            Node *newNode = top;
+            Node *newNode = this->top;
             while (newNode != nullptr)
             {
                 sizeStack++;
@@ -82,14 +82,14 @@ public:
 
     int Top()
     {
-        if (top == nullptr)
+        if (this->top == nullptr)
         {
             cout << "Stack is empty";
             return -1;
         }
         else
         {
-            int value = top->data;
+            int value = this->top->data;
             return value;
         }
     }
