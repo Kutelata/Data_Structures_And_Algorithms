@@ -66,31 +66,37 @@ public:
         }
     }
 
-    // void LNR(Node *root)
-    // {
-    //     if (root != NULL)
-    //     {
-    //         LNR(root->pLeft);
-    //         if (root != NULL)
-    //         {
-    //             cout << root->data << " ";
-    //         }
-    //         LNR(root->pRight);
-    //     }
-    // }
+    void LNR()
+    {
+        Node *newNode = this->root;
+        if (newNode != nullptr)
+        {
+            this->root = newNode->left;
+            LNR();
+            if (newNode != nullptr)
+            {
+                cout << newNode->data << " ";
+            }
+            this->root = newNode->right;
+            LNR();
+        }
+    }
 
-    // void LRN(Node *root)
-    // {
-    //     if (root != NULL)
-    //     {
-    //         LRN(root->pLeft);
-    //         LRN(root->pRight);
-    //         if (root != NULL)
-    //         {
-    //             cout << root->data << " ";
-    //         }
-    //     }
-    // }
+    void LRN()
+    {
+        Node *newNode = this->root;
+        if (newNode != nullptr)
+        {
+            this->root = newNode->left;
+            LRN();
+            this->root = newNode->right;
+            LRN();
+            if (newNode != nullptr)
+            {
+                cout << newNode->data << " ";
+            }
+        }
+    }
 };
 
 int main()
@@ -102,31 +108,18 @@ int main()
     Node *node5 = new Node(5);
     Node *node6 = new Node(6);
     Node *node7 = new Node(7);
+    Node *node8 = new Node(8);
 
     root->left = node2;
     root->right = node3;
     node2->left = node4;
     node2->right = node5;
-    node5->left = node6;
-    node5->right = node7;
+    node3->left = node6;
+    node3->right = node7;
 
     BinaryTree Btree = BinaryTree(root);
 
+    Btree.InsertNewRoot(12);
+    Btree.InsertNode(node7, 13);
     Btree.NLR();
-
-    // // traverse binary tree with NLR
-    // cout << "traverse tree with NLR:";
-    // NLR(root);
-    // // traverse tree LNR
-    // cout << "\ntraverse tree with LNR:";
-    // LNR(root);
-    // // traverse tree LRN
-    // cout << "\ntraverse tree with LRN:";
-    // LRN(root);
-    // // insert new Node into tree
-    // insertNode(node2, 9);
-    // // traverse binary tree with NLR after insert new Node
-    // cout << "\ntraverse tree with NLR:";
-    // NLR(root);
-    // system("pause");
 }
