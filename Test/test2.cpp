@@ -7,10 +7,44 @@ class DaySo
 public:
     int *arr, size;
 
+    DaySo()
+    {
+        this->arr = nullptr;
+        this->size = 0;
+    }
+
     DaySo(int *arr, int size)
     {
         this->size = size;
         this->arr = arr;
+    }
+
+    ~DaySo()
+    {
+        this->size = 0;
+        if (this->arr != nullptr)
+            delete this->arr;
+    }
+
+    void Input()
+    {
+        int n;
+        cin >> n;
+        int *arr;
+        arr = (int *)calloc(n, sizeof(int));
+        for (int i = 0; i < n; i++)
+        {
+            cin >> *(arr + i);
+        }
+        this->size = n;
+        this->arr = arr;
+    }
+
+    void Display()
+    {
+        for (int i = 0; i < this->size; i++)
+            cout << this->arr[i] << " ";
+        cout << endl;
     }
 
     int Partition(int arr[], int start, int end)
@@ -63,13 +97,6 @@ public:
                 left = mid + 1;
         }
         cout << "Khong tim thay phan tu nao" << endl;
-    }
-
-    void Display()
-    {
-        for (int i = 0; i < this->size; i++)
-            cout << this->arr[i] << " ";
-        cout << endl;
     }
 };
 

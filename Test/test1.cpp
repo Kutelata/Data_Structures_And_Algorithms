@@ -26,6 +26,27 @@ public:
             delete this->arr;
     }
 
+    void Input()
+    {
+        int n;
+        cin >> n;
+        int *arr;
+        arr=(int*)calloc(n,sizeof(int));
+        for (int i = 0; i < n; i++)
+        {
+            cin >> *(arr + i);
+        }
+        this->size = n;
+        this->arr = arr;
+    }
+
+    void Display()
+    {
+        for (int i = 0; i < this->size; i++)
+            cout << this->arr[i] << " ";
+        cout << endl;
+    }
+
     void BubbleSort()
     {
         for (int i = 0; i < this->size - 1; i++)
@@ -113,13 +134,6 @@ public:
             cout << "Khong tim thay phan tu nao" << endl;
         else
             cout << "Phan tu dang o vi tri thu: " << position + 1 << endl;
-    }
-
-    void Display()
-    {
-        for (int i = 0; i < this->size; i++)
-            cout << this->arr[i] << " ";
-        cout << endl;
     }
 };
 
